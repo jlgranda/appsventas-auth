@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,6 +21,8 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ec.gob.smc.common.WebUtil;
 import ec.gob.smc.security.exceptions.AuthMethodNotSupportedException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * AjaxLoginProcessingFilter
@@ -32,7 +32,6 @@ import ec.gob.smc.security.exceptions.AuthMethodNotSupportedException;
  * Aug 3, 2016
  */
 public class AjaxLoginProcessingFilter extends AbstractAuthenticationProcessingFilter {
-    private static Logger logger = LoggerFactory.getLogger(AjaxLoginProcessingFilter.class);
 
     private final AuthenticationSuccessHandler successHandler;
     private final AuthenticationFailureHandler failureHandler;
@@ -51,14 +50,14 @@ public class AjaxLoginProcessingFilter extends AbstractAuthenticationProcessingF
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException, IOException, ServletException {
         if (!HttpMethod.POST.name().equals(request.getMethod()) || !WebUtil.isAjax(request)) {
-            if(logger.isDebugEnabled()) {
-                logger.debug("Authentication method not supported. Request method: " + request.getMethod());
+            if(true /*logger.isDebugEnabled()*/) {
+                Logger.getLogger(AjaxLoginProcessingFilter.class.getName()).log(Level.SEVERE, "Authentication method not supported. Request method: {0}", request.getMethod());
+            
             }
             throw new AuthMethodNotSupportedException("Authentication method not supported");
         }
 
         LoginRequest loginRequest = objectMapper.readValue(request.getReader(), LoginRequest.class);
-        
         if (StringUtils.isBlank(loginRequest.getUsername()) || StringUtils.isBlank(loginRequest.getPassword())) {
             throw new AuthenticationServiceException("Username or Password not provided");
         }

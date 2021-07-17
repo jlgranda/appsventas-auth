@@ -1,7 +1,6 @@
 package ec.gob.smc.security.model.token;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
 import org.springframework.security.authentication.BadCredentialsException;
 
 import ec.gob.smc.security.exceptions.JwtExpiredTokenException;
@@ -13,9 +12,9 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
+import java.util.logging.Level;
 
 public class RawAccessJwtToken implements JwtToken {
-    private static Logger logger = LoggerFactory.getLogger(RawAccessJwtToken.class);
             
     private String token;
     
@@ -36,10 +35,10 @@ public class RawAccessJwtToken implements JwtToken {
         try {
             return Jwts.parser().setSigningKey(signingKey).parseClaimsJws(this.token);
         } catch (UnsupportedJwtException | MalformedJwtException | IllegalArgumentException | SignatureException ex) {
-            logger.error("Invalid JWT Token", ex);
+            Logger.getLogger(RawAccessJwtToken.class.getName()).log(Level.SEVERE, "Invalid JWT Token", ex);
             throw new BadCredentialsException("Invalid JWT token: ", ex);
         } catch (ExpiredJwtException expiredEx) {
-            logger.info("JWT Token is expired", expiredEx);
+            Logger.getLogger(RawAccessJwtToken.class.getName()).log(Level.SEVERE, "JWT Token is expired", expiredEx);
             throw new JwtExpiredTokenException(this, "JWT Token expired", expiredEx);
         }
     }

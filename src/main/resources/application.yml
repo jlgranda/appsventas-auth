@@ -19,9 +19,9 @@ comaco.security.jwt:
 
 spring.datasource:
   platform: postgres
-  url: "jdbc:postgresql://localhost:5432/comaco"
-  username: postgres
-  password: root1997
+  url: "jdbc:postgresql://localhost:5432/smc_base"
+  username: smc_admin
+  password: c0mac0ABc
   data: "classpath*:data.sql"
 spring.jpa:
   database: POSTGRESQL
