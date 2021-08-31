@@ -52,7 +52,7 @@ public class AjaxAuthenticationProvider implements AuthenticationProvider {
 //            throw new BadCredentialsException("Authentication Failed. Username or Password not valid.");
 //        }
         //La contraseña ya viene encriptada
-        if (!password.equalsIgnoreCase(user.getPassword())) { //TODO la constraseña debe viajar encryptada
+        if (!password.trim().equalsIgnoreCase(user.getPassword().trim())) { //TODO la constraseña debe viajar encryptada
             throw new BadCredentialsException("Authentication Failed. Username or Password not valid.");
         }
 

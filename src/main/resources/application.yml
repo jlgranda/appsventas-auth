@@ -36,3 +36,5 @@ spring.jpa:
 
 spring.jackson.serialization.FAIL_ON_EMPTY_BEANS: false
 spring.h2.console.enabled: false
+
+
