@@ -1,15 +1,9 @@
 package org.jlgranda.appsventas.security.auth.ajax;
 
 
-import java.nio.charset.StandardCharsets;
-import java.security.DigestException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
-import java.util.Base64;
 import org.jlgranda.appsventas.security.model.UserContext;
 import org.jlgranda.appsventas.user.service.DatabaseUserService;
 import java.util.List;
@@ -17,12 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 import org.jlgranda.appsventas.domain.Subject;
 import org.jlgranda.appsventas.domain.UsersRoles;
 import org.springframework.beans.factory.annotation.Autowired;
