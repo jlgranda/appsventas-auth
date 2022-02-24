@@ -31,7 +31,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.validator.routines.UrlValidator;
+//import org.apache.commons.validator.routines.UrlValidator;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -426,11 +426,11 @@ public final class Strings {
      * @param url the url
      * @return true, if is url
      */
-    public static boolean isUrl(String url) {
-        String[] schemes = {"http", "https", "ftp"}; // DEFAULT schemes = "http", "https", "ftp"
-        UrlValidator urlValidator = new UrlValidator(schemes);
-        return urlValidator.isValid(url);
-    }
+//    public static boolean isUrl(String url) {
+//        String[] schemes = {"http", "https", "ftp"}; // DEFAULT schemes = "http", "https", "ftp"
+//        UrlValidator urlValidator = new UrlValidator(schemes);
+//        return urlValidator.isValid(url);
+//    }
 
     /**
      * Complete.

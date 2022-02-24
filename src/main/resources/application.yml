@@ -1,9 +1,9 @@
 server.port: 9966
 spring.profiles: default
-comaco.security.jwt:
+appsventas.security.jwt:
   tokenExpirationTime: 15 # Number of minutes
   refreshTokenExpTime: 60 # Minutes
-  tokenIssuer: http://tecnopro.net
+  tokenIssuer: http://jlgranda.com
   tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
   
 #spring.datasource:
@@ -19,13 +19,13 @@ comaco.security.jwt:
 
 spring.datasource:
   platform: postgres
-  url: "jdbc:postgresql://localhost:5432/smc_base"
-  username: smc_admin
-  password: c0mac0ABc
+  url: "jdbc:postgresql://localhost:5432/appsventas"
+  username: postgres
+  password: root1997
   data: "classpath*:data.sql"
 spring.jpa:
   database: POSTGRESQL
-  show-sql: false
+  show-sql: true
   generate-ddl: true
   hibernate.ddl-auto: update
   properties.hibernate.jdbc.lob.non_contextual_creation: true
